@@ -1,0 +1,25 @@
+{
+  "mobiles": [
+    {
+      "name": "Iphone1 2",
+      "price": "85000",
+      "ram": "8GB",
+      "storage": "256GB",
+      "id": 1
+    },
+    {
+      "name": "Iphone13",
+      "price": "12",
+      "ram": "12GB",
+      "storage": "32GB",
+      "id": 2
+    },
+    {
+      "name": "Samsung S10 Pro Max",
+      "price": "85000",
+      "ram": "12GB",
+      "storage": "1TB",
+      "id": 3
+    }
+  ]
+}

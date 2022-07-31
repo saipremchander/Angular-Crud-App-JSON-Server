@@ -1,0 +1,41 @@
+.box{
+    padding:5%;
+    width: 80%;
+
+}
+.form-wrapper{
+    width: 500px;
+    border:1px solid gray;
+    padding: 3%;
+    position: fixed;
+    top:10%;
+    left: 30%;
+    margin: auto;
+    background: white;
+    animation: move 0.5s 1;
+}
+
+@keyframes move {
+    0%{
+top:0%;
+    }
+    100%{
+        top:10%;
+    }
+    
+}
+
+.formgroup{
+    margin: 25px 0px;
+}
+
+.pop{
+    position: absolute; border:1px solid gray;
+    padding: 3%;
+    position: fixed;
+    top:10%;
+    left: 35%;
+    margin: auto;
+    background: white;
+    animation: move 0.5s 1;
+}

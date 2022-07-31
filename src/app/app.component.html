@@ -1,0 +1,105 @@
+<ng-container *ngIf="mobiles;else err"  > 
+<div class="container pt-5 box">
+<div class="headers row">
+  <h2 class=" col-sm-10  col-10">Manage mobiles</h2>
+  <button class="btn btn-secondary col-sm-2 col-2"  *ngIf="open"  (click)="openform()">Add Mobile</button>
+</div>
+
+<table class="table table-striped">
+  <thead >
+      <tr>
+        <th>S.No</th>
+        <th>Mobile</th>
+        <th>Price</th>
+        <th>Ram</th>
+        <th>storage</th>
+        <th colspan="2">Actions</th> 
+        
+      </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let mobile of mobiles">
+      <td>{{mobile.id}}</td>
+      <td>{{mobile.name}}</td>
+      <td>{{mobile.price}}</td>
+      <td>{{mobile.ram}}</td>
+      <td>{{mobile.storage}}</td>
+      <td><button class="btn btn-primary" *ngIf="open" (click)="openform(mobile)">Edit</button></td> 
+      <td><button class="btn btn-danger"  *ngIf="open" (click)="deleteMobile(mobile['id'])">Delete</button>
+      
+
+      
+        <div class="pop" *ngIf="addsuccess" align="center">
+          <div class="mb-5" >Yes..! SuccessFully Added</div>
+          <button class="btn btn-secondary" (click)="close()">Close</button>
+        </div>
+        <div class="pop" *ngIf="delsuccess" align="center">
+          <div class="mb-5" >Yes..! SuccessFully Deleted</div>
+          <button class="btn btn-secondary" (click)="close()">Close</button>
+        </div>
+
+        <div class="pop" *ngIf="updatesuccess" align="center">
+          <div class="mb-5" >Yes..! SuccessFully updated</div>
+          <button class="btn btn-secondary" (click)="close()">Close</button>
+        </div>
+      </td>
+    </tr>
+</tbody>
+</table>
+
+</div>
+
+</ng-container>
+
+
+
+
+
+<ng-template #err>
+  <div class="bg-danger">Error Loading Data</div>
+</ng-template>
+<form #formfilled="ngForm"  novalidate>
+<div class="form-wrapper" *ngIf="showform">
+
+      <h3 class="text-dark">{{formheader}}</h3>
+
+      <div class="formgroup">
+          <label for="Name">Mobile Name</label>
+          <input type="text" class="form-control"   placeholder="Enter Mobile Name" name="mobilename" [(ngModel)]="mobilename"/>
+      </div>
+      <div class="formgroup">
+        <label for="Price">Price (INR)</label>
+        <input type="text" class="form-control"  placeholder="Enter Price" min="3000"  name="price" [(ngModel)]="price"/>
+      </div>
+    <div class="formgroup">
+      <label for="ram">Ram</label>
+    
+      <select class="form-control" name="ram" [(ngModel)]="ram" >
+  
+        <option *ngFor="let size of ramsize" >{{size.ram}}</option>
+
+      </select>
+    </div>
+
+    
+  <div class="formgroup">
+    <label for="Storage">Storage</label>
+
+    <select class="form-control"  name="storage" [(ngModel)]="storage" >
+      <option *ngFor="let com of storagerom">{{com.rom}}</option>
+
+    </select>
+
+
+  </div>
+<div class="action" >
+  <button class="btn btn-success me-3" (click)="save()" [disabled]="!formfilled.valid">{{submit}}</button>
+
+
+  <button class="btn btn-danger  me-3" (click)="closeform()"> Close</button>
+
+  <button *ngIf="clear" class="btn btn-info" (click)="clearform()"> Clear</button>
+</div>
+
+    
+</div></form>
